@@ -76,7 +76,7 @@ FlatpakUpdate () {
 SnapUpdate () {
     SNAPFLAG=true
     printf "\t\e[1mSNAP detected\e[0m\n\n"
-    snap refresh $MANQ
+    snap refresh
 }
 
 # For Clear Linux
@@ -205,8 +205,8 @@ CheckPkgAuto () {
             else
                 NOPKG=$(( $NOPKG + 1 ))
             fi
-            snapd > /dev/null 2>&1
-            if [ "$?" != "127" -a "$?" = "1" ] ; then
+            snap > /dev/null 2>&1
+            if [ "$?" != "127" -a "$?" = "0" ] ; then
                 SnapUpdate
             else
                 NOPKG=$(( $NOPKG + 1 ))
